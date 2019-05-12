@@ -7,11 +7,6 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 public class Pacijenti extends Korisnik{
 	public Lekar izabraniLekar;
 	public ZdravstvenaKnjizica zdknjizica;
-	
-	public Pacijenti() {
-		this.izabraniLekar=null;
-		this.zdknjizica=null;
-	}
 
 	public Pacijenti(String id, String ime, String prezime, String jmbg, Pol pol, String adresa, String brojTelefona,
 			String korisnickoIme, String lozinka, Uloga uloga, Lekar izabranilekar, ZdravstvenaKnjizica zdknjizica) {

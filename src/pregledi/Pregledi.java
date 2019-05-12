@@ -5,6 +5,7 @@ import korisnik.Lekar;
 import korisnik.Pacijenti;
 
 public class Pregledi {
+	public String id;
 	public Pacijenti pacijent;
 	public Lekar lekar;
 	public String datum;
@@ -13,6 +14,7 @@ public class Pregledi {
 	public Status status;
 	
 	public Pregledi() {
+		this.id="";
 		this.pacijent=null;
 		this.lekar=null;
 		this.datum="";
@@ -21,8 +23,9 @@ public class Pregledi {
 		this.status=null;
 	}
 
-	public Pregledi(Pacijenti pacijent, Lekar lekar, String datum, int soba, String opis, Status status) {
+	public Pregledi(String id,Pacijenti pacijent, Lekar lekar, String datum, int soba, String opis, Status status) {
 		super();
+		this.id=id;
 		this.pacijent = pacijent;
 		this.lekar = lekar;
 		this.datum = datum;
@@ -31,6 +34,7 @@ public class Pregledi {
 		this.status = status;
 	}
 	public Pregledi(Pregledi original) {
+		this.id=original.id;
 		this.pacijent=original.pacijent;
 		this.lekar=original.lekar;
 		this.datum=original.datum;
@@ -38,6 +42,14 @@ public class Pregledi {
 		this.opis=original.opis;
 		this.status=original.status;
 		}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public Pacijenti getPacijent() {
 		return pacijent;
@@ -90,6 +102,7 @@ public class Pregledi {
 	@Override
 	public String toString() {
 		String s = "Pregledi " + super.toString() + 
+				"\nId : "+this.id+
 				"\nPacijent : " + this.pacijent +
 				"\nLekar : " + this.lekar+
 				"\nTermin: "+ this.datum+
