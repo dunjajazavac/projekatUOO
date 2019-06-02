@@ -3,34 +3,34 @@ package zdravstvenaKnjizica;
 import enumeracija.Kategorija;
 
 public class ZdravstvenaKnjizica {
-	public int broj;
+	public String broj;
 	public String datum;
 	public Kategorija kategorija;
 	
 	public ZdravstvenaKnjizica() {
-		this.broj=0;
+		this.broj="";
 		this.datum="";
 		this.kategorija=null;
 	}
-
-	public ZdravstvenaKnjizica(int broj, String datum, Kategorija kategorija) {
+	
+	public ZdravstvenaKnjizica(String broj, String datum, Kategorija kategorija) {
 		super();
 		this.broj = broj;
 		this.datum = datum;
 		this.kategorija = kategorija;
 	}
-	
+
 	public ZdravstvenaKnjizica(ZdravstvenaKnjizica original) {
 		this.broj=original.broj;
 		this.datum=original.datum;
 		this.kategorija=original.kategorija;
 	}
 
-	public int getBroj() {
+	public String getBroj() {
 		return broj;
 	}
 
-	public void setBroj(int broj) {
+	public void setBroj(String broj) {
 		this.broj = broj;
 	}
 
@@ -52,7 +52,7 @@ public class ZdravstvenaKnjizica {
 	
 	@Override
 	public String toString() {
-		String s = "Zdravstvena knjizica " + super.toString() + 
+		String s = "Zdravstvena knjizica " + 
 				"\nBroj: " + this.broj +
 				"\nDatum: " + this.datum+
 				"\nKategorija: "+this.kategorija;

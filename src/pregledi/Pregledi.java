@@ -7,40 +7,44 @@ import korisnik.Pacijenti;
 public class Pregledi {
 	public String id;
 	public Pacijenti pacijent;
-	public Lekar lekar;
+	public 	Lekar doktor;
 	public String datum;
 	public int soba;
 	public String opis;
 	public Status status;
+	public double cena;
 	
 	public Pregledi() {
 		this.id="";
-		this.pacijent=null;
-		this.lekar=null;
+		this.pacijent=new Pacijenti();
+		this.doktor=new Lekar();
 		this.datum="";
 		this.soba=0;
 		this.opis="";
 		this.status=null;
+		this.cena=0;
 	}
 
-	public Pregledi(String id,Pacijenti pacijent, Lekar lekar, String datum, int soba, String opis, Status status) {
+	public Pregledi(String id,Pacijenti pacijent, Lekar doktor, String datum, int soba, String opis, Status status,double cena) {
 		super();
 		this.id=id;
 		this.pacijent = pacijent;
-		this.lekar = lekar;
+		this.doktor = doktor;
 		this.datum = datum;
 		this.soba = soba;
 		this.opis = opis;
 		this.status = status;
+		this.cena=cena;
 	}
 	public Pregledi(Pregledi original) {
 		this.id=original.id;
 		this.pacijent=original.pacijent;
-		this.lekar=original.lekar;
+		this.doktor=original.doktor;
 		this.datum=original.datum;
 		this.soba=original.soba;
 		this.opis=original.opis;
 		this.status=original.status;
+		this.cena=original.cena;
 		}
 
 	public String getId() {
@@ -51,6 +55,7 @@ public class Pregledi {
 		this.id = id;
 	}
 
+	
 	public Pacijenti getPacijent() {
 		return pacijent;
 	}
@@ -59,12 +64,14 @@ public class Pregledi {
 		this.pacijent = pacijent;
 	}
 
-	public Lekar getLekar() {
-		return lekar;
+	
+
+	public Lekar getDoktor() {
+		return doktor;
 	}
 
-	public void setLekar(Lekar lekar) {
-		this.lekar = lekar;
+	public void setDoktor(Lekar doktor) {
+		this.doktor = doktor;
 	}
 
 	public String getDatum() {
@@ -99,16 +106,26 @@ public class Pregledi {
 		this.status = status;
 	}
 	
+	
+	public double getCena() {
+		return cena;
+	}
+
+	public void setCena(double cena) {
+		this.cena = cena;
+	}
+
 	@Override
 	public String toString() {
-		String s = "Pregledi " + super.toString() + 
+		String s = "Pregledi " + 
 				"\nId : "+this.id+
-				"\nPacijent : " + this.pacijent +
-				"\nLekar : " + this.lekar+
+				"\nPacijent : " + this.pacijent.getKorisnickoIme() +
+				"\nLekar : " + this.doktor.getKorisnickoIme()+
 				"\nTermin: "+ this.datum+
 				"\nSoba: "+ this.soba+
 				"\nOpis: "+this.opis+
-				"\nStatus: "+this.status;
+				"\nStatus: "+this.status+
+				"\nCena: "+this.cena;
 		return s;
 	}
 	

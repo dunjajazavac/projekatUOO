@@ -1,10 +1,8 @@
 package korisnik;
 
 import enumeracija.Pol;
-import enumeracija.Uloga;
 
 public abstract class Korisnik {
-	protected String id;
 	protected String ime;
 	protected String prezime;
 	protected String jmbg;
@@ -13,10 +11,8 @@ public abstract class Korisnik {
 	protected String brojTelefona;
 	protected String korisnickoIme;
 	protected String lozinka;
-	protected Uloga uloga;
 	
 	public Korisnik() {
-		this.id="";
 		this.ime="";
 		this.prezime="";
 		this.jmbg="";
@@ -25,15 +21,14 @@ public abstract class Korisnik {
 		this.brojTelefona="";
 		this.korisnickoIme="";
 		this.lozinka="";
-		this.uloga=null;
+		
 		
 			}
 	
 		
-		public Korisnik(String id, String ime, String prezime, String jmbg, Pol pol, String adresa, String brojTelefona,
-			String korisnickoIme, String lozinka, Uloga uloga) {
+		public Korisnik(String ime, String prezime, String jmbg, Pol pol, String adresa, String brojTelefona,
+			String korisnickoIme, String lozinka) {
 		super();
-		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.jmbg = jmbg;
@@ -42,13 +37,11 @@ public abstract class Korisnik {
 		this.brojTelefona = brojTelefona;
 		this.korisnickoIme = korisnickoIme;
 		this.lozinka = lozinka;
-		this.uloga = uloga;
-	}
+		}
 
 
 
 	public Korisnik(Korisnik original) {
-		this.id=original.id;
 		this.ime=original.ime;
 		this.prezime=original.prezime;
 		this.jmbg=original.jmbg;
@@ -57,20 +50,10 @@ public abstract class Korisnik {
 		this.brojTelefona=original.brojTelefona;
 		this.korisnickoIme=original.korisnickoIme;
 		this.lozinka=original.lozinka;
-		this.uloga=original.uloga;
+
 		
 	}
 	
-	public String getId() {
-		return id;
-	}
-
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 
 
 	public String getIme() {
@@ -114,11 +97,9 @@ public abstract class Korisnik {
 	}
 
 
-
 	public void setPol(Pol pol) {
 		this.pol = pol;
 	}
-
 
 
 	public String getAdresa() {
@@ -169,30 +150,17 @@ public abstract class Korisnik {
 
 
 
-	public Uloga getUloga() {
-		return uloga;
-	}
-
-
-
-	public void setUloga(Uloga uloga) {
-		this.uloga = uloga;
-	}
-
-
 
 	@Override
 	public String toString() {
-		return "\nIdentifikacioni Kod: " + id
-				 + "\nIme: " + ime
+		return  "\nIme: " + ime
 				 + "\nPrezime: " + prezime
 				 + "\nJmbg: " + jmbg
 				 + "\nPol: " + pol
 				 + "\nAdresa: " + adresa
 				 + "\nBroj telefona: " + brojTelefona
 				 + "\nKorisnicko ime: " + korisnickoIme
-				 + "\nLozinka: " + lozinka
-				 + "\nUloga: " + uloga;
+				 + "\nLozinka: " + lozinka;
 				 
 		}
 		

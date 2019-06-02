@@ -1,47 +1,89 @@
 package korisnik;
 
+
+
+import java.util.ArrayList;
+
 import enumeracija.Pol;
-import enumeracija.Uloga;
+import pregledi.Pregledi;
 import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 
 public class Pacijenti extends Korisnik{
-	public Lekar izabraniLekar;
-	public ZdravstvenaKnjizica zdknjizica;
+	public Lekar izabranilekar;
+	public ZdravstvenaKnjizica idKnjizica;
 
-	public Pacijenti(String id, String ime, String prezime, String jmbg, Pol pol, String adresa, String brojTelefona,
-			String korisnickoIme, String lozinka, Uloga uloga, Lekar izabranilekar, ZdravstvenaKnjizica zdknjizica) {
-		super(id, ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, uloga);
+	public Pacijenti() {
+		super();
+		this.izabranilekar=new Lekar();
+		this.idKnjizica=new ZdravstvenaKnjizica();
 		}
+	
 		
-	public Pacijenti(Pacijenti original) {
-		super(original);
-		this.izabraniLekar=original.izabraniLekar;
-		this.zdknjizica=original.zdknjizica;
-	}
+	
 
-	public Lekar getIzabraniLekar() {
-		return izabraniLekar;
-	}
-
-	public void setIzabraniLekar(Lekar izabraniLekar) {
-		this.izabraniLekar = izabraniLekar;
-	}
-
-	public ZdravstvenaKnjizica getZdknjizica() {
-		return zdknjizica;
-	}
-
-	public void setZdknjizica(ZdravstvenaKnjizica zdknjizica) {
-		this.zdknjizica = zdknjizica;
+	
+	public Pacijenti(String ime,String prezime, String jmbg, Pol pol,String adresa, String brojTelefona, String korisnickoIme, String lozinka, Lekar izabraniLekar,ZdravstvenaKnjizica idKnjizica) {
+		
+		super(ime,prezime,jmbg,pol,adresa,brojTelefona,korisnickoIme,lozinka);
+		this.izabranilekar=izabraniLekar;
+		this.idKnjizica=idKnjizica;
 	}
 	
+	public Pacijenti(String jmbgString) {
+		
+	}
+
+
+
+
+
+
+
+
+
+
+	public Lekar getIzabranilekar() {
+		return izabranilekar;
+	}
+
+
+
+
+
+	public void setIzabranilekar(Lekar izabranilekar) {
+		this.izabranilekar = izabranilekar;
+	}
+
+
+	public ZdravstvenaKnjizica getIdKnjizica() {
+		return idKnjizica;
+	}
+
+
+
+
+
+	public void setIdKnjizica(ZdravstvenaKnjizica idKnjizica) {
+		this.idKnjizica = idKnjizica;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
-		String s = "Pacijent " + super.toString() + 
-				"\nIzabrani lekar : " + this.izabraniLekar +
-				"\nZdravstvena knjizica : " + this.zdknjizica;
-		return s;
-	}
+		return "PACIJENT \nIme: " +getIme()+
+				"\nPrezime: "+getPrezime()+
+				"\nJMBG: "+getJmbg()+
+				"\nPol: "+getPol()+
+				"\nAdresa: "+getAdresa()+
+				"\nBroj telefona: "+getBrojTelefona()+
+				"\nKorisnicko ime: "+getKorisnickoIme()+
+				"\nLozinka: "+getLozinka()+
+				"\nIzabrani lekar: "+this.izabranilekar.getKorisnickoIme()+
+				"\nID knjzice: "+this.idKnjizica.getBroj()+"\n";
+				}
 	
 
 		

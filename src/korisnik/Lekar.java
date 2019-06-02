@@ -1,41 +1,46 @@
 package korisnik;
 
+
+
 import java.util.ArrayList;
+
 import enumeracija.Pol;
 import enumeracija.Sluzba;
-import enumeracija.Uloga;
 import pregledi.Pregledi;
 
 public class Lekar extends Korisnik {
-	public double plata;
-	public String specijalizacija;
 	public Sluzba sluzba;
+	public String specijalizacija;
+	public double plata;
+	public ArrayList<Pregledi> pregled;
 	public ArrayList<Pacijenti> pacijent;
-	public ArrayList<Pregledi>pregled;
 	
 	public Lekar() {
-		this.plata=0;
-		this.specijalizacija="";
+		super();
 		this.sluzba=null;
-		this.pacijent=new ArrayList<Pacijenti>();
-		this.pregled=new ArrayList<Pregledi>();
+		this.specijalizacija="";
+		this.plata=0;
 		
 		}
 
-	public Lekar(String id, String ime, String prezime, String jmbg, Pol pol, String adresa, String brojTelefona,
-			String korisnickoIme, String lozinka, Uloga uloga, double plata, String specijalizacija, Sluzba sluzba, ArrayList<Pacijenti>pacijent, ArrayList<Pregledi>pregled) {
-		super(id, ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, uloga);
+	public Lekar(String ime, String prezime, String jmbg,Pol pol, String adresa, String brojTelefona,
+			String korisnickoIme, String lozinka, Sluzba sluzba,String specijalizacija,double plata,ArrayList<Pregledi>pregled,ArrayList<Pacijenti>pacijent) {
+		super(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka);
+		
+		this.sluzba=sluzba;
+		this.specijalizacija=specijalizacija;
+		this.plata=plata;
+		
 		
 	}
 	
-	public Lekar(Lekar original) {
-		super(original);
-		this.plata=original.plata;
-		this.specijalizacija=original.specijalizacija;
-		this.sluzba=original.sluzba;
-		this.pacijent=original.pacijent;
-		this.pregled=original.pregled;
-		
+
+	public Sluzba getSluzba() {
+		return sluzba;
+	}
+
+	public void setSluzba(Sluzba sluzba) {
+		this.sluzba = sluzba;
 	}
 
 	public double getPlata() {
@@ -54,22 +59,6 @@ public class Lekar extends Korisnik {
 		this.specijalizacija = specijalizacija;
 	}
 
-	public Sluzba getSluzba() {
-		return sluzba;
-	}
-
-	public void setSluzba(Sluzba sluzba) {
-		this.sluzba = sluzba;
-	}
-
-	public ArrayList<Pacijenti> getPacijent() {
-		return pacijent;
-	}
-
-	public void setPacijent(ArrayList<Pacijenti> pacijent) {
-		this.pacijent = pacijent;
-	
-	}
 	public ArrayList<Pregledi> getPregled() {
 		return pregled;
 	}
@@ -78,21 +67,28 @@ public class Lekar extends Korisnik {
 		this.pregled = pregled;
 	}
 
+	public ArrayList<Pacijenti> getPacijent() {
+		return pacijent;
+	}
+
+	public void setPacijent(ArrayList<Pacijenti> pacijent) {
+		this.pacijent = pacijent;
+	}
+
 	@Override
 	public String toString() {
-		String s = "Lekar " + super.toString() + 
-				"\nPlata: " + this.plata +
-				"\nSpecijalizacija: " + this.specijalizacija+
-				"\nSluzba "+ this.sluzba;
+		return "LEKAR\nIme: " +getIme()+
+				"\nPrezime: "+getPrezime()+
+				"\nJMBG: "+getJmbg()+
+				"\nPol: "+getPol()+
+				"\nAdresa: "+getAdresa()+
+				"\nBroj telefona: "+getBrojTelefona()+
+				"\nKorisnicko ime: "+getKorisnickoIme()+
+				"\nLozinka: "+getLozinka()+
+				"\nSluzba: "+getSluzba()+
+				"\nSpecijalizacija: "+this.specijalizacija+
+				"\nPlata: "+getPlata();
+				}
+			
 		
-		for (Pacijenti pacijent : pacijent) {
-			s += "\n" + pacijent;
-		}
-		for(Pregledi pregled: pregled) {
-			s+="\n"+pregled;
-		}
-		return s;
-	
-
-}
 }

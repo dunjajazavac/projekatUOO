@@ -1,30 +1,32 @@
 package enumeracija;
 
 public enum Kategorija{
-	PRVA("1"),DRUGA("2"),TRECA("3");
+	PRVA,
+	DRUGA,
+	TRECA;
 	
-	private String skracenica;
-	private Kategorija(String skracenica) {
-		this.skracenica=skracenica;
-	}
-	private Kategorija() {
-		this.skracenica="SVE";
-	}
-	public String getSkracenica() {
-		return skracenica;
-	}
-	public String toString() {
-		switch(this) {
-		case PRVA:
-			return "Pregled se placa 300 dinara.";
-		case DRUGA:
-			return "Pregled se placa 50 dinara.";
-		case TRECA:
-			return "Pregled je besplatan.";
-			default:
-				return null;
-		
+	public static Kategorija fromInt(int a) {
+		switch(a) {
+		case 1:
+			return PRVA;
+		case 2:
+			return DRUGA;
+		default:
+			return TRECA;
 		
 		}
 	}
+	public static int toInt(Kategorija kategorijaO) {
+		switch(kategorijaO) {
+		case PRVA:
+			return 1;
+		case DRUGA:
+			return 2;
+		default:
+			return 3;
+		}
+		
+	}
+
 }
+
