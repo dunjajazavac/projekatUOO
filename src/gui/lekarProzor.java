@@ -11,13 +11,19 @@ import javax.swing.JMenuItem;
 import domZdravlja.DomZdravlja;
 import guiProzorZaPrikaz.pacijentiPrikaz;
 import guiProzorZaPrikaz.preglediPrikaz;
+import guiProzorZaPrikaz.pregledizaLekara;
 import korisnik.Lekar;
 
 public class lekarProzor extends JFrame {
 	private JMenuBar glavniMeni=new JMenuBar();
-	private JMenu lekarMeni=new JMenu("Meni");
 	private JMenuItem preglediItem=new JMenuItem("Pregledi lekara");
 	private JMenuItem pacijentiItem=new JMenuItem("Pacijenti lekara");
+	private JMenu knjiziceMenu=new JMenu("Knjizice");
+	private JMenuItem lekariItem=new JMenuItem("Lekari");
+	private JMenuItem sestreItem=new JMenuItem("Medicinske Sestre");
+	private JMenu preglediMeni=new JMenu("Pregledi");
+	private JMenuItem knjiziceItem=new JMenuItem("Knjizice");
+	private JMenu korisniciMenu=new JMenu("Korisnici");
 	private DomZdravlja dom;
 	private Lekar prijavljen;
 	
@@ -33,39 +39,27 @@ public class lekarProzor extends JFrame {
 	}
 	private void initGUI() {
 		setJMenuBar(glavniMeni);
-		glavniMeni.add(lekarMeni);
-		lekarMeni.add(preglediItem);
-		lekarMeni.add(pacijentiItem);
+		this.korisniciMenu.add(lekariItem);
+		this.korisniciMenu.add(pacijentiItem);
+		this.korisniciMenu.add(sestreItem);
+		this.preglediMeni.add(preglediItem);
+		this.knjiziceMenu.add(knjiziceItem);
+		this.glavniMeni.add(korisniciMenu);
+		this.glavniMeni.add(preglediMeni);
+		this.glavniMeni.add(knjiziceMenu);
 	}
 	private void initListeners() {
-		pacijentiItem.addActionListener(new ActionListener() {
+	preglediItem.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
-		preglediItem.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				preglediPrikaz p=new preglediPrikaz(dom);
+				pregledizaLekara p = new pregledizaLekara(dom, prijavljen);
 				p.setVisible(true);
-			}
-		});
-		pacijentiItem.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				pacijentiPrikaz prikaz=new pacijentiPrikaz(dom);
-				prikaz.setVisible(true);
 				
 			}
 		});
+		korisniciMenu.setEnabled(false);
+		knjiziceMenu.setEnabled(false);
+		
 	}
-	
-	
-
 }

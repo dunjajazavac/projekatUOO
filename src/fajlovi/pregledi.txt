@@ -1,2 +1,2 @@
-115|sanjap|ljubisas|24.09.2020|14|glavobolja|3|300.0
+115|sanjap|ljubisas|24.09.2020|14|zubobolja|3|0.0
 116|sanjap|ljubisas|12.12.2020.|87|mucnina|1|0.0
