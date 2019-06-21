@@ -52,12 +52,12 @@ public class ZdravstvenaKnjizica {
 	
 	@Override
 	public String toString() {
-		String s = "Zdravstvena knjizica " + 
+		return "Zdravstvena knjizica " + 
 				"\nBroj: " + this.broj +
 				"\nDatum: " + this.datum+
 				"\nKategorija: "+this.kategorija;
 		
-		return s;
+
 	}
 
 }

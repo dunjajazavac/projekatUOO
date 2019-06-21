@@ -1,1 +1,2 @@
-Jana|Jovic|124578|2|Zeleznicka 3|0612345|janaj|jovic33|30000.0|5
+Maja|Simic|032145|2|Rumenacka 38|0641235|majas|maja123|48000.0|6
+Nadja|Lepojic|01231321|2|Mostonga 6|065477778|nadjal|nadja123|45000.0|5

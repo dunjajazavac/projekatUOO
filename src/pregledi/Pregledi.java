@@ -9,7 +9,7 @@ public class Pregledi {
 	public Pacijenti pacijent;
 	public 	Lekar doktor;
 	public String datum;
-	public int soba;
+	public String soba;
 	public String opis;
 	public Status status;
 	public double cena;
@@ -19,23 +19,27 @@ public class Pregledi {
 		this.pacijent=new Pacijenti();
 		this.doktor=new Lekar();
 		this.datum="";
-		this.soba=0;
+		this.soba="";
 		this.opis="";
 		this.status=null;
 		this.cena=0;
 	}
 
-	public Pregledi(String id,Pacijenti pacijent, Lekar doktor, String datum, int soba, String opis, Status status,double cena) {
+	public Pregledi(String id, Pacijenti pacijent, Lekar doktor, String datum, String soba, String opis, Status status,
+			double cena) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.pacijent = pacijent;
 		this.doktor = doktor;
 		this.datum = datum;
 		this.soba = soba;
 		this.opis = opis;
 		this.status = status;
-		this.cena=cena;
+		this.cena = cena;
 	}
+
+
+
 	public Pregledi(Pregledi original) {
 		this.id=original.id;
 		this.pacijent=original.pacijent;
@@ -82,11 +86,13 @@ public class Pregledi {
 		this.datum = datum;
 	}
 
-	public int getSoba() {
+	
+
+	public String getSoba() {
 		return soba;
 	}
 
-	public void setSoba(int soba) {
+	public void setSoba(String soba) {
 		this.soba = soba;
 	}
 

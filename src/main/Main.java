@@ -1,9 +1,14 @@
 package main;
-import enumeracija.*;
+
 
 import java.util.ArrayList;
 
 import domZdravlja.DomZdravlja;
+import enumeracija.Kategorija;
+import enumeracija.Pol;
+import enumeracija.Sluzba;
+import enumeracija.Status;
+import gui.Login;
 import korisnik.Lekar;
 import korisnik.MedicinskaSestra;
 import korisnik.Pacijenti;
@@ -13,53 +18,46 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 public class Main {
 	final static String fajlPacijenata="pacijenti.txt";
 	final static String fajlLekara="lekari.txt";
-	final static String fajlMedSestra="medicinskesestre.txt";
+	final static String fajlMedSestre="medicinskesestre.txt";
 	final static String fajlPregleda="pregledi.txt";
-	final static String fajlKnjizica="zdknjizica.txt";
+	final static String fajlKnjizice="zdknjizica.txt";
 	
 	
 public static void main(String[] args){
-	DomZdravlja dom=new DomZdravlja();
-		
-		System.out.println("Dodavanje");
-		
-		Lekar doktor=new Lekar("Marko", "Srdanovic", "03012121", Pol.MUSKI, "Koste Racina 7", "0651234", "markos", "srda123", Sluzba.OPSTAMEDICINA, "decija hirurgija", 50000, new ArrayList<Pregledi>(), new ArrayList<Pacijenti>());
-		Lekar doktor1=new Lekar("Sanja", "Matic", "2205147", Pol.ZENSKI, "Rumenacka 44","0641235", "sanjam", "matic1", Sluzba.STOMATOLOGIJA,"zubna hirurgija",48000, new ArrayList<Pregledi>(),new ArrayList<Pacijenti>());
-		MedicinskaSestra sestra=new MedicinskaSestra("Jana", "Jovic", "124578", Pol.ZENSKI, "Zeleznicka 3", "0612345", "janaj", "jovic33", 30000, Sluzba.PRAVNOEKONOMSKIPOSLOVI, new ArrayList<Lekar>(),new ArrayList<Pacijenti>(), new ArrayList<Pregledi>());
-		ZdravstvenaKnjizica knjizica=new ZdravstvenaKnjizica("123", "12.10.20119", Kategorija.DRUGA);
-		ZdravstvenaKnjizica knjizica1=new ZdravstvenaKnjizica("321", "02.01.2020", Kategorija.PRVA);
-		Pacijenti pacijent=new Pacijenti("Olja", "Milosevic", "3004199", Pol.ZENSKI, "Tone Hadzica 10", "0641235", "oljam","milosevic123", doktor, knjizica1);
-		Pregledi pregled=new Pregledi("2", pacijent, doktor,"26.03.2021",5,"bolovi u grlu", Status.ZATRAZEN,100);
+	 DomZdravlja dom=new DomZdravlja();
+     //ZdravstvenaKnjizica knjizica=new ZdravstvenaKnjizica("1234","21.02.2020.", Kategorija.PRVA);
+	 //Lekar doktor=new Lekar("Ljubisa", "Simic", "0104777", Pol.MUSKI, "Jevrejska 14","0651234", "ljubisas", "ljube123", Sluzba.OPSTAMEDICINA, "ortopedija", 50000);
+	 //Pacijenti pacijent=new Pacijenti("Sanja", "Peric", "0405221", Pol.ZENSKI, "Koste Racina 2", "0621234","sanjap", "sanja123",doktor,knjizica);
+	 //Pregledi p=new Pregledi("115", pacijent, doktor,"24.09.2020",14,"glavobolja", Status.ZAKAZAN, 300);
+	// Pacijenti pacijent1=new Pacijenti("Sava","Perovic","025874", Pol.MUSKI, "Slobodana Penezica 23", "0641789", "savap","perovic1", doktor, knjizica);
+	 //MedicinskaSestra sestra=new MedicinskaSestra("Maja","Simic","032145",Pol.ZENSKI, "Rumenacka 3","0641235","majas", "maja123", 48000, Sluzba.TEHNICKIPOSLOVI);
+	 //Pregledi pregled=new Pregledi("114", pacijent1, doktor,"25.08.2019.",15,"bol u grlu", Status.ZAKAZAN,500);
+	 //dom.dodajMedSestru(sestra);
+	//dom.dodajPacijenta(pacijent);
+	 //dom.dodajPacijenta(pacijent1);
+	// dom.dodajLekara(doktor);
+	 //dom.dodajPreglede(p);
+	// dom.dodajZdknjizicu(knjizica);
+	// dom.snimiLekare(fajlLekara);
+	 //dom.snimiMedsestre(fajlMedSestre);
+	 //dom.snimiPacijente(fajlPacijenata);
+	 //dom.snimiPreglede(fajlPregleda);
+	 //dom.snimiZdknjzicu(fajlKnjizice);
+	 
+	 dom.ucitajKnjizice(fajlKnjizice);
+	 dom.ucitajLekare(fajlLekara);
+	 dom.ucitajPacijente(fajlPacijenata);
+	 dom.ucitajMedSestre(fajlMedSestre);
+	 dom.ucitajPreglede(fajlPregleda);
+	 DomZdravlja.ispis(dom);
+	Login prozor=new Login(dom);
+	prozor.setVisible(true);
+	 
+	 
 	
-		
-		
-		
-		
-		dom.dodajLekara(doktor);
-		dom.dodajLekara(doktor1);
-		dom.dodajMedSestru(sestra);
-		dom.dodajPacijenta(pacijent);
-		dom.dodajPreglede(pregled);
-		dom.dodajZdknjizicu(knjizica);
-		dom.dodajZdknjizicu(knjizica1);
-		
-		dom.snimiLekare(fajlLekara);
-		dom.snimiMedsestre(fajlMedSestra);
-		dom.snimiPacijente(fajlPacijenata);
-		dom.snimiPreglede(fajlPregleda);
-		dom.snimiZdknjzicu(fajlKnjizica);
-		
-		dom.ucitajKnjizice(fajlKnjizica);
-		dom.ucitajLekare(fajlLekara);
-		dom.ucitajMedSestre(fajlMedSestra);
-		dom.ucitajPacijente(fajlPacijenata);
-		dom.ucitajPreglede(fajlPregleda);
-		
-		dom.obrisiLekara("sanjam");
-		
-		DomZdravlja.ispis(dom);		
-		
-			
+	
+	
+	
 		}
 
 		

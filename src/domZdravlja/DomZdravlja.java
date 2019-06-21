@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 import enumeracija.Kategorija;
 import enumeracija.Pol;
 import enumeracija.Sluzba;
@@ -78,63 +78,61 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 			return knjizica;
 		}
 
-		public void setKnjizica(ArrayList<ZdravstvenaKnjizica> knjizica) {
-			this.knjizica = knjizica;
-		}
-
-
 
 		public void dodajPacijenta(Pacijenti pacijent) {
 			this.pacijent.add(pacijent);
 			
 		}
-		
-		public void obrisiPacijenta(Pacijenti pacijent) {
-			this.pacijent.remove(pacijent);
-		}
-
 		public Pacijenti nadjiPacijenta(String korisnickoIme) {
-			for (Pacijenti pacijent : pacijent) {
+			for(Pacijenti pacijent: pacijent) {
 				if (pacijent.getKorisnickoIme().equals(korisnickoIme)) {
 					return pacijent;
 				}
-				else {
-					System.out.println("Ne postoji pacijent sa unetim id-jem.Unesite ponovo.");
+				
+			}
+			return null;
+		
+		}
+		public void obrisiPacijenta(Pacijenti pacijent) {
+			this.pacijent.remove(pacijent);
+		}
+		public Pacijenti loginPacijent(String korisnickoime,String sifra) {
+			for(Pacijenti pacijent:pacijent) {
+				if(pacijent.getKorisnickoIme().equalsIgnoreCase(korisnickoime)&& pacijent.getLozinka().equals(sifra)) {
+					return pacijent;
 				}
 			}
 			return null;
 		}
 		
+		
 		public void dodajLekara(Lekar lekar) {
 			this.lekari.add(lekar);
 			
 		}
-		public void obrisiLekara(String korisnickoIme) {
-			for (Lekar lekar : lekari) {
-				if (lekar.getKorisnickoIme().equals(korisnickoIme)) {
-					System.out.println("Uspesno brisanje lekara");
-					lekari.remove(lekar);
-					}
-				else {
-				System.out.println("Ne postoji lekar sa unetim jmbg-om. Pokusajte ponovo brisanje.");
-				}
-
-				  }
+		public void obrisiLekara(Lekar lekar) {
+			this.lekari.remove(lekar);
 		}
 		
 		public  Lekar nadjiLekara(String KorisnickoIme) {
 			boolean postoji=false;
 			for (Lekar lekar : lekari) {
 				if (lekar.getKorisnickoIme().equals(KorisnickoIme)) {
-					postoji=true;
 					return lekar;
 					}
-			if(postoji=false) {
-			System.out.println("Ne postoji lekar sa unetim jbmg-om.Unesite ponovo");
-			}
+			
 			}
 			return null;
 		
+		}
+		public Lekar loginLekara(String korisnickoIme,String lozinka) {
+			for(Lekar lekar: lekari) {
+				if(lekar.getKorisnickoIme().equalsIgnoreCase(korisnickoIme) && lekar.getLozinka().equals(lozinka)) {
+					return lekar;
+				}
+				
+			}
+			return null;
 		}
 		
 		public void dodajMedSestru(MedicinskaSestra medicinskesestre) {
@@ -182,17 +180,15 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 		public void obrisiZdknjizicu(ZdravstvenaKnjizica zdknjizica) {
 			this.knjizica.remove(zdknjizica);
 		}
-		public  ZdravstvenaKnjizica nadjiZdknjizicu(String broj) {
+		public  ZdravstvenaKnjizica nadjZdravstvenaKnjizica(String id) {
 			for (ZdravstvenaKnjizica zdknjizica : knjizica) {
-				if (zdknjizica.getBroj().equals(broj)) {
+				if (zdknjizica.getBroj().equals(id)) {
 					return zdknjizica;
 				}
-				else {
-					System.out.println("Ne postoji zdravstvena knjizica sa unetim brojem.Unesite opet");
+				
+
 				}
-			}
 			return null;
-		
 		}
 	public void snimiLekare(String fajlIme) {
 		try {
@@ -239,7 +235,7 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 			File file = new File("src/fajlovi/"+fajlIme);
 			String podaci = "";
 			for (Pregledi pregled :pregled) {
-				podaci +=pregled.getId()+"|"+pregled.getPacijent().getKorisnickoIme() + "|" + pregled.getDoktor().getKorisnickoIme() +"|"+pregled.getDatum()+"|"+pregled.getSoba()+"|"+pregled.getOpis() + "|" +Status.toInt(pregled.getStatus())+pregled.getCena()+"\n";
+				podaci +=pregled.getId()+"|"+pregled.getPacijent().getKorisnickoIme() + "|" + pregled.getDoktor().getKorisnickoIme() +"|"+pregled.getDatum()+"|"+pregled.getSoba()+"|"+pregled.getOpis() + "|" +Status.toInt(pregled.getStatus())+"|"+pregled.getCena()+"\n";
 			}
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file,false));
 			writer.write(podaci);
@@ -252,13 +248,13 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 	public void snimiZdknjzicu(String fajlIme) {
 		try {
 			File file=new File("src/fajlovi/"+fajlIme);
-			String knjizica1= "";
+			String pacijent= "";
 			for (ZdravstvenaKnjizica zdknjizica :knjizica) {
-				knjizica1 +=zdknjizica.getBroj() + "|" + zdknjizica.getDatum() +"|"+Kategorija.toInt(zdknjizica.getKategorija())+"\n";
+				pacijent +=zdknjizica.getBroj() + "|" + zdknjizica.getDatum() +"|"+Kategorija.toInt(zdknjizica.getKategorija())+"|"+"\n";
 				
 			}
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file,false));
-			writer.write(knjizica1);
+			writer.write(pacijent);
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("Greska prilikom snimanja zdravstvene knjizice.");
@@ -274,8 +270,7 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 					   pacijent.getJmbg()+ "|" + Pol.toInt(pacijent.getPol()) + "|" +
 					   pacijent.getAdresa()+ "|" +pacijent.getBrojTelefona()+ "|" +
 					   pacijent.getKorisnickoIme()+ "|"+ pacijent.getLozinka()+ "|"+
-					   pacijent.getIdKnjizica().getBroj()+ "|" +pacijent.getIzabranilekar().getKorisnickoIme()+
-					    "|" +"\n";
+					   pacijent.getJmbgLekara().getKorisnickoIme()+"|" +pacijent.getIdKnjizica().getBroj()+ "|"+"\n";
 				}
 
 			BufferedWriter writer= new BufferedWriter(new FileWriter(file,false));
@@ -305,10 +300,8 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 				Sluzba sluzba=Sluzba.fromInt(SluzbaInt);
 				String specijalizacija=split[9];
 				double plata=Double.parseDouble(split[10]);
-				ArrayList<Pregledi>pregled=new ArrayList<Pregledi>();
-				ArrayList<Pacijenti>pacijent=new ArrayList<Pacijenti>();
 				
-				Lekar lekar=new Lekar(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, sluzba, specijalizacija, plata, pregled, pacijent);
+				Lekar lekar=new Lekar(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, sluzba, specijalizacija, plata);
 				lekari.add(lekar);
 				
 			}
@@ -337,10 +330,7 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 				double plata= Double.parseDouble(split[8]);
 				int SluzbaInt=Integer.parseInt(split[9]);
 				Sluzba sluzba=Sluzba.fromInt(SluzbaInt);
-				ArrayList<Lekar> lekari = new ArrayList<Lekar>();
-				ArrayList<Pregledi> pregled = new ArrayList<Pregledi>();
-				ArrayList<Pacijenti> pacijent = new ArrayList<Pacijenti>();
-				MedicinskaSestra sestra = new MedicinskaSestra(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka,plata,sluzba,new ArrayList<Lekar>(),new ArrayList<Pacijenti>(),new ArrayList<Pregledi>());
+				MedicinskaSestra sestra =new MedicinskaSestra(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, plata, sluzba);
 				medicinskesestre.add(sestra);
 			}
 			reader.close();
@@ -360,16 +350,16 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 				String prezime = split[1];
 				String jmbg = split[2];
 				int Polint=Integer.parseInt(split[3]);
-				Pol pol=Pol.fromInt(Polint);
+				Pol pol=Pol.valueOf(Pol.fromInt(Polint)+"");
 				String adresa = split[4];
 				String brojTelefona = split[5];
 				String korisnickoIme = split[6];
 				String lozinka = split[7];
 				String doktor=split[8];
-				Lekar izabraniLekar=(Lekar) nadjiLekara(doktor);
+				Lekar jmbgLekara=(Lekar) nadjiLekara(doktor);
 				String knjizicaStr=split[9];
-				ZdravstvenaKnjizica idKnjizica=(ZdravstvenaKnjizica) nadjiZdknjizicu(knjizicaStr);	
-				Pacijenti pacijent1=new Pacijenti(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, izabraniLekar, idKnjizica);
+				ZdravstvenaKnjizica idKnjizica=(ZdravstvenaKnjizica) nadjZdravstvenaKnjizica(knjizicaStr);	
+				Pacijenti pacijent1=new Pacijenti(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka, jmbgLekara, idKnjizica);
 				pacijent.add(pacijent1);
 				
 				
@@ -392,7 +382,7 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 				String broj = split[0];
 				String datum=split[1];
 				int kategorijaInt=Integer.parseInt(split[2]);
-				Kategorija kategorija=Kategorija.fromInt(kategorijaInt);
+				Kategorija kategorija=Kategorija.valueOf(Kategorija.fromInt(kategorijaInt)+"");
 				ZdravstvenaKnjizica knjizica1=new ZdravstvenaKnjizica(broj,datum,kategorija);
 				knjizica.add(knjizica1);
 			}
@@ -415,11 +405,10 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 				String lekar1=split[2];
 				Lekar lekar=(Lekar) nadjiLekara(lekar1);
 				String datum=split[3];
-				String sobaS=split[4];
-				int soba=Integer.parseInt(sobaS);
+				String soba=split[4];
 				String opis=split[5];
-				int StatusInt=Integer.parseInt(split[6]);
-				Status status=Status.fromInt(StatusInt);
+				int status1=Integer.parseInt(split[6]);
+				Status status=Status.valueOf(Status.fromInt(status1)+"");
 				double cena=Double.parseDouble(split[7]);
 				
 				Pregledi pregled1=new Pregledi(id,pacijent,lekar,datum,soba,opis,status,cena);
@@ -431,7 +420,15 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 			e.printStackTrace();
 		}
 	}
-
+	public MedicinskaSestra login(String korisnickoIme, String sifra) {
+		for (MedicinskaSestra sestra : medicinskesestre) {
+			if(sestra.getKorisnickoIme().equalsIgnoreCase(korisnickoIme)
+					&& sestra.getLozinka().equals(sifra)) {
+				return sestra;
+			}
+		}
+		return null;
+	}
 	public static void ispis(DomZdravlja dom) {
 		for(Lekar lekar:dom.getLekari()) {
 			System.out.println(lekar+"\n");
@@ -440,7 +437,7 @@ import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 			System.out.println(medicinskaSestra+"\n");
 		}
 		for(Pacijenti pacijent:dom.getPacijent()) {
-			System.out.println(pacijent+"\n");
+			System.out.println(pacijent +"\n");
 		}
 		for(ZdravstvenaKnjizica zdravstvenaKnjizica:dom.getKnjizica()) {
 			System.out.println(zdravstvenaKnjizica+"\n");

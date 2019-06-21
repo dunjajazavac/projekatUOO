@@ -12,8 +12,6 @@ public class Lekar extends Korisnik {
 	public Sluzba sluzba;
 	public String specijalizacija;
 	public double plata;
-	public ArrayList<Pregledi> pregled;
-	public ArrayList<Pacijenti> pacijent;
 	
 	public Lekar() {
 		super();
@@ -24,7 +22,7 @@ public class Lekar extends Korisnik {
 		}
 
 	public Lekar(String ime, String prezime, String jmbg,Pol pol, String adresa, String brojTelefona,
-			String korisnickoIme, String lozinka, Sluzba sluzba,String specijalizacija,double plata,ArrayList<Pregledi>pregled,ArrayList<Pacijenti>pacijent) {
+			String korisnickoIme, String lozinka, Sluzba sluzba,String specijalizacija,double plata) {
 		super(ime, prezime, jmbg, pol, adresa, brojTelefona, korisnickoIme, lozinka);
 		
 		this.sluzba=sluzba;
@@ -59,21 +57,6 @@ public class Lekar extends Korisnik {
 		this.specijalizacija = specijalizacija;
 	}
 
-	public ArrayList<Pregledi> getPregled() {
-		return pregled;
-	}
-
-	public void setPregled(ArrayList<Pregledi> pregled) {
-		this.pregled = pregled;
-	}
-
-	public ArrayList<Pacijenti> getPacijent() {
-		return pacijent;
-	}
-
-	public void setPacijent(ArrayList<Pacijenti> pacijent) {
-		this.pacijent = pacijent;
-	}
 
 	@Override
 	public String toString() {

@@ -2,19 +2,17 @@ package korisnik;
 
 
 
-import java.util.ArrayList;
-
 import enumeracija.Pol;
 import pregledi.Pregledi;
 import zdravstvenaKnjizica.ZdravstvenaKnjizica;
 
 public class Pacijenti extends Korisnik{
-	public Lekar izabranilekar;
+	public Lekar jmbgLekara;
 	public ZdravstvenaKnjizica idKnjizica;
 
 	public Pacijenti() {
 		super();
-		this.izabranilekar=new Lekar();
+		this.jmbgLekara=new Lekar();
 		this.idKnjizica=new ZdravstvenaKnjizica();
 		}
 	
@@ -22,37 +20,39 @@ public class Pacijenti extends Korisnik{
 	
 
 	
-	public Pacijenti(String ime,String prezime, String jmbg, Pol pol,String adresa, String brojTelefona, String korisnickoIme, String lozinka, Lekar izabraniLekar,ZdravstvenaKnjizica idKnjizica) {
+	public Pacijenti(String ime,String prezime, String jmbg, Pol pol,String adresa, String brojTelefona, String korisnickoIme, String lozinka, Lekar jmbgLekara,ZdravstvenaKnjizica idKnjizica) {
 		
 		super(ime,prezime,jmbg,pol,adresa,brojTelefona,korisnickoIme,lozinka);
-		this.izabranilekar=izabraniLekar;
+		this.jmbgLekara=jmbgLekara;
 		this.idKnjizica=idKnjizica;
 	}
 	
-	public Pacijenti(String jmbgString) {
-		
+
+
+
+
+
+
+
+
+
+	
+
+
+	public Lekar getJmbgLekara() {
+		return jmbgLekara;
 	}
 
 
 
 
 
-
-
-
-
-
-	public Lekar getIzabranilekar() {
-		return izabranilekar;
+	public void setJmbgLekara(Lekar jmbgLekara) {
+		this.jmbgLekara = jmbgLekara;
 	}
 
 
 
-
-
-	public void setIzabranilekar(Lekar izabranilekar) {
-		this.izabranilekar = izabranilekar;
-	}
 
 
 	public ZdravstvenaKnjizica getIdKnjizica() {
@@ -73,7 +73,7 @@ public class Pacijenti extends Korisnik{
 
 	@Override
 	public String toString() {
-		return "PACIJENT \nIme: " +getIme()+
+		return "PACIJENT\nIme: " +getIme()+
 				"\nPrezime: "+getPrezime()+
 				"\nJMBG: "+getJmbg()+
 				"\nPol: "+getPol()+
@@ -81,7 +81,7 @@ public class Pacijenti extends Korisnik{
 				"\nBroj telefona: "+getBrojTelefona()+
 				"\nKorisnicko ime: "+getKorisnickoIme()+
 				"\nLozinka: "+getLozinka()+
-				"\nIzabrani lekar: "+this.izabranilekar.getKorisnickoIme()+
+				"\nIzabrani lekar:"+this.jmbgLekara.getKorisnickoIme()+
 				"\nID knjzice: "+this.idKnjizica.getBroj()+"\n";
 				}
 	

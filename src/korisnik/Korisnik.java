@@ -54,6 +54,9 @@ public abstract class Korisnik {
 		
 	}
 	
+	
+
+
 
 
 	public String getIme() {

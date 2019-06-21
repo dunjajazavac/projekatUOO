@@ -1,2 +1,2 @@
-Marko|Srdanovic|03012121|1|Koste Racina 7|0651234|markos|srda123|1|decija hirurgija|50000.0
-Sanja|Matic|2205147|2|Rumenacka 44|0641235|sanjam|matic1|3|zubna hirurgija|48000.0
+Ljubisa|Simic|0104777|1|Jevrejska 144|0651234|ljubisas|ljube123|1|ortopedija|50000.0
+Mia|Djordjevic|0215454|2|Somborska 6|06845421|miadj|mia123|3|proteticar|25000.0
